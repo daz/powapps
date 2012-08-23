@@ -1,0 +1,86 @@
+body {
+  font-family: helvetica;
+  text-align: center;
+  background: #e0e0d8;
+  margin: 0;
+}
+
+ul {
+  width: 400px;
+  margin: 20px auto;
+  padding: 0;
+  text-align: left;
+  list-style: none;
+  background: #fff;
+}
+
+a {
+  font-size: 1em;
+  padding: 0.5em 0.8em;
+  display: block;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fff;
+  -webkit-tap-highlight-color: #776;
+}
+
+a:hover, a:active {
+  background: #776;
+  color: #fff;
+}
+
+/* Normal screens */
+
+@media (min-width: 500px) {
+  ul {
+    -webkit-border-radius: 6px;
+       -moz-border-radius: 6px;
+            border-radius: 6px;
+    -webkit-box-shadow: 0px 2px 7px #999;
+       -moz-box-shadow: 0px 2px 7px #999;
+            box-shadow: 0px 2px 7px #999;
+  }
+  li:first-child a {
+    -webkit-border-top-left-radius: 6px;
+       -moz-border-top-left-radius: 6px;
+            border-top-left-radius: 6px;
+    -webkit-border-top-right-radius: 6px;
+       -moz-border-top-right-radius: 6px;
+            border-top-right-radius: 6px;
+  }
+  li:last-child a {
+    border-bottom: 0;
+    -webkit-border-bottom-left-radius: 6px;
+       -moz-border-bottom-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+    -webkit-border-bottom-right-radius: 6px;
+       -moz-border-bottom-right-radius: 6px;
+            border-bottom-right-radius: 6px;
+  }
+}
+
+/* Phones, landscape and portrait */
+
+@media (max-width: 500px) {
+  body {
+    background: #fff;
+  }
+  ul {
+    width: 100%;
+    margin: 0;
+  }
+  a:hover {
+    background: #fff;
+    color: #000;
+  }
+}
+
+/* Portrait phones */
+
+@media (max-width: 340px) {
+  a {
+    font-size: 1.2em;
+  }
+}
