@@ -18,7 +18,7 @@ Add to your home screen, or bookmark!
 Clone somewhere and link in pow:
 
 ```sh
-$ git clone http://github.com/daz/powapps
+$ git clone https://github.com/daz/powapps.git
 $ cd ~/.pow
 $ ln -s /path/to/powapps
 ```
