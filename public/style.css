@@ -41,13 +41,13 @@ li:last-child a {
 
 a {
   display: block;
-  padding: 0.5em 0.8em;
+  padding: 8px 10px;
   border-bottom: 1px solid #e5e5e5;
   background: #fff;
   color: #000;
   text-decoration: none;
   font-weight: bold;
-  font-size: 1em;
+  font-size: 16px;
   -webkit-tap-highlight-color: #776;
 }
 
@@ -62,6 +62,9 @@ a:hover, a:active {
   ul {
     width: 100%;
   }
+  a {
+    font-size: 12px;
+  }
   a:hover {
     background: #fff;
     color: #000;
@@ -72,6 +75,6 @@ a:hover, a:active {
 
 @media (max-width: 340px) {
   a {
-    font-size: 1.2em;
+    font-size: 19px;
   }
 }
