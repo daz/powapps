@@ -2,6 +2,9 @@
 
 A page with links to all your [Pow](http://pow.cx) apps.
 
+![Home screen](http://daz.github.com/powapps/images/home.png)
+![Pow Apps](http://daz.github.com/powapps/images/powapps.png)
+
 Links are relative to the current domain, so you can get quick access to apps on a network device if you're using [xip.io](http://xip.io).
 
 ## Use
