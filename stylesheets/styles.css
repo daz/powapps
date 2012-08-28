@@ -218,6 +218,10 @@ footer {
   }
 }
 
+.screenshot {
+  margin: 0 10px;
+}
+
 @media print, screen and (max-width: 720px) {
   body {
     word-wrap:break-word;
