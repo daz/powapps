@@ -15,13 +15,13 @@ Add to your iOS home screen, or bookmark!
 
 ## Installation
 
-Clone somewhere and link in pow:
+Clone into `~/.pow`
 
 ```sh
-$ git clone https://github.com/daz/powapps.git
 $ cd ~/.pow
-$ ln -s /path/to/powapps
+$ git clone https://github.com/daz/powapps.git
 ```
+
 ## Todo
 
 * Subdomains - handle subdomain.myapp.10.0.0.1.xip.io properly
