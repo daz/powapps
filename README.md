@@ -24,7 +24,6 @@ $ git clone https://github.com/daz/powapps.git
 
 ## Todo
 
-* Subdomains - handle subdomain.myapp.10.0.0.1.xip.io properly
 * Perfect browser support - please let me know if the responsive CSS isn't targeted properly to your device
 
 ## Pull requests
