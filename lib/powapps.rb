@@ -2,7 +2,7 @@ require 'rack'
 require 'erb'
 
 class Powapps
-  VERSION = '0.2.0'
+  VERSION = '0.2.1'
 
   def self.call(env)
     new(env).response.finish
@@ -10,11 +10,12 @@ class Powapps
 
   def initialize(env)
     @request = Rack::Request.new(env)
+    @domain = domain
+    @apps = apps
+    @dead_apps = dead_apps
   end
 
   def response
-    @domain = domain
-    @apps = apps
     path = File.expand_path("../views/layout.html.erb", __FILE__)
     layout = ERB.new(File.read(path)).result(binding)
     Rack::Response.new(layout)
@@ -26,8 +27,20 @@ class Powapps
     @request.host.split('.')[1..-1].join('.')
   end
 
-  # Array of all directories under ~/.pow (minus powapps)
+  # App names, minus this app itself
   def apps
-    Dir[File.join(Dir.home, '.pow', '*')].map{ |dir| File.basename(dir) }.reject{ |f| f[File.basename(Dir.pwd)] }
+    directories.map{ |d| File.basename(d) }.reject{ |a| a[File.basename(Dir.pwd)] }
+  end
+
+  # Directories under ~/.pow
+  def directories
+    Dir[File.join(Dir.home, '.pow', '*')]
+  end
+
+  # App names of dead symlinks
+  def dead_apps
+    directories.select do |d|
+      !File.exists?(File.readlink(d)) rescue false
+    end.map{ |d| File.basename(d) }
   end
 end
