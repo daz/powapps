@@ -4,7 +4,7 @@ body {
   background: #e0e0d8;
   text-align: center;
   text-shadow: 0 1px 0 #fff;
-  font-family: helvetica;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
 }
 
 .container {
