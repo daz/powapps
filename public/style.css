@@ -3,7 +3,6 @@ body {
   padding: 10px;
   background: #e0e0d8;
   text-align: center;
-  text-shadow: 0 1px 0 #fff;
   font-family: 'Helvetica Neue', Helvetica, sans-serif;
 }
 
@@ -70,6 +69,7 @@ p {
   color: #666;
   text-align: right;
   font-size: 12px;
+  text-shadow: 0 1px 0 #fff;
 }
 
 p a {
