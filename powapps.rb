@@ -1,8 +1,9 @@
+require 'rubygems'
 require 'rack'
 require 'erb'
 
 class Powapps
-  VERSION = '0.2.1'
+  VERSION = '0.2.2'
 
   def self.call(env)
     new(env).response.finish
@@ -34,7 +35,7 @@ class Powapps
 
   # Directories under ~/.pow
   def directories
-    Dir[File.join(Dir.home, '.pow', '*')]
+    Dir[File.join(ENV['HOME'], '.pow', '*')]
   end
 
   # App names of dead symlinks
