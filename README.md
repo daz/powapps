@@ -21,11 +21,3 @@ Clone into `~/.pow`
 $ cd ~/.pow
 $ git clone https://github.com/daz/powapps.git
 ```
-
-## Todo
-
-* Perfect browser support - please let me know if the responsive CSS isn't targeted properly to your device
-
-## Pull requests
-
-Yes please!
