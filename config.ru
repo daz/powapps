@@ -1,3 +1,3 @@
-require './powapps'
+require './lib/powapps'
 
 run Powapps
