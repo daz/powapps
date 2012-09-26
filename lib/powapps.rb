@@ -3,7 +3,7 @@ require 'rack'
 require 'erb'
 
 class Powapps
-  VERSION = '0.2.2'
+  VERSION = '0.2.3'
 
   def self.call(env)
     new(env).response.finish

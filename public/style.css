@@ -85,7 +85,7 @@ p a:hover {
 
 /* Phones, landscape and portrait */
 
-@media (max-width: 500px) {
+@media (max-width: 568px) {
   .container {
     width: 100%;
   }
