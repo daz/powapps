@@ -64,7 +64,7 @@ li a:hover, li a.dead:hover, li a:active {
   color: #fff;
 }
 
-p {
+.version {
   margin: 8px 8px 0;
   color: #666;
   text-align: right;
@@ -72,13 +72,13 @@ p {
   text-shadow: 0 1px 0 #fff;
 }
 
-p a {
+.version a {
   border-bottom: 2px solid #d2d2ca;
   color: #999;
   text-decoration: none;
 }
 
-p a:hover {
+.version a:hover {
   border-bottom: 2px solid #c56342;
   color: #000;
 }
