@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'rack'
 require 'erb'
+require 'pathname'
 
 class Powapps
   VERSION = '0.2.3'
@@ -11,9 +12,8 @@ class Powapps
 
   def initialize(env)
     @request = Rack::Request.new(env)
-    @domain = domain
     @apps = apps
-    @dead_apps = dead_apps
+    @domain = domain
   end
 
   def response
@@ -28,20 +28,32 @@ class Powapps
     @request.host.split('.')[1..-1].join('.')
   end
 
-  # App names, minus this app itself
+  # Apps, minus this app itself
   def apps
-    directories.map{ |d| File.basename(d) }.reject{ |a| a[File.basename(Dir.pwd)] }
+    directories.map{ |path| App.new(path, domain) }.reject{ |app| app.name == File.basename(Dir.pwd) }
   end
 
-  # Directories under ~/.pow
+  # Directories and symlinks in ~/.pow
   def directories
     Dir[File.join(ENV['HOME'], '.pow', '*')]
   end
+end
 
-  # App names of dead symlinks
-  def dead_apps
-    directories.select do |d|
-      !File.exists?(File.readlink(d)) rescue false
-    end.map{ |d| File.basename(d) }
+class App
+  def initialize(path, domain)
+    @path, @domain = path, domain
+  end
+
+  def name
+    File.basename(@path)
+  end
+
+  def url
+    "http://#{name}.#{@domain}/"
+  end
+
+  # Returns true if the symlinks target doesn't exist
+  def dead?
+    !Pathname.new(@path).realpath rescue true
   end
 end

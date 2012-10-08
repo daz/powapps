@@ -10,7 +10,9 @@
       <ul>
         <% @apps.each do |app| %>
           <li>
-            <a<%= ' class="dead"' if @dead_apps.include?(app) %> href="http://<%= app %>.<%= @domain %>"><%= app %></a>
+            <a<%= ' class="dead"' if app.dead? %> href="<%= app.url %>">
+              <%= app.name %>
+            </a>
           </li>
         <% end %>
       </ul>
