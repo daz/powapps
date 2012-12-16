@@ -30,7 +30,7 @@ class Powapps
 
   # Apps, minus this app itself
   def apps
-    directories.map{ |path| App.new(path, domain) }.reject{ |app| app.name == File.basename(Dir.pwd) }
+    directories.map{ |path| AppItem.new(path, domain) }.reject{ |app| app.name == File.basename(Dir.pwd) }
   end
 
   # Directories and symlinks in ~/.pow
@@ -39,7 +39,7 @@ class Powapps
   end
 end
 
-class App
+class AppItem
   def initialize(path, domain)
     @path, @domain = path, domain
   end
