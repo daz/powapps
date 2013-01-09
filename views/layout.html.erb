@@ -11,6 +11,7 @@
         <% @apps.each do |app| %>
           <li>
             <a<%= ' class="dead"' if app.dead? %> href="<%= app.url %>">
+              <img class="favicon" src="<%= app.favicon %>" width="16" height="16">
               <%= app.name %>
             </a>
           </li>

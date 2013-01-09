@@ -1,10 +1,9 @@
 require 'rubygems'
 require 'rack'
 require 'erb'
-require 'pathname'
 
 class Powapps
-  VERSION = '0.2.3'
+  VERSION = '0.3'
 
   def self.call(env)
     new(env).response.finish
@@ -38,24 +37,5 @@ class Powapps
   # Directories and symlinks in ~/.pow
   def directories
     Dir[File.join(Dir.pwd, '..', '*')]
-  end
-end
-
-class AppItem
-  def initialize(path, domain)
-    @path, @domain = path, domain
-  end
-
-  def name
-    File.basename(@path)
-  end
-
-  def url
-    "http://#{name}.#{@domain}/"
-  end
-
-  # Returns true if the symlinks target doesn't exist
-  def dead?
-    !Pathname.new(@path).realpath rescue true
   end
 end

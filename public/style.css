@@ -45,7 +45,7 @@ li:last-child a {
 
 li a {
   display: block;
-  padding: 8px 10px;
+  padding: 3px 10px 9px;
   border-bottom: 1px solid #e5e5e5;
   background: #fff;
   color: #000;
@@ -62,6 +62,17 @@ li a.dead {
 li a:hover, li a.dead:hover, li a:active {
   background: #776;
   color: #fff;
+}
+
+.favicon {
+  position: relative;
+  top: 5px;
+  padding: 1px;
+  border: 1px solid #ddd;
+  background: #fff;
+  -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+          border-radius: 2px;
 }
 
 .version {
