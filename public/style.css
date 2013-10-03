@@ -1,9 +1,10 @@
 body {
   margin: 0;
-  padding: 10px;
-  background: #e0e0d8;
+  background: #eee;
   text-align: center;
+  font-weight: 300;
   font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  -webkit-text-size-adjust: 100%;
 }
 
 .container {
@@ -15,104 +16,101 @@ body {
 ul {
   margin: 0;
   padding: 0;
-  -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-          border-radius: 6px;
   background: #fff;
-  -webkit-box-shadow: 0px 2px 7px #999;
-     -moz-box-shadow: 0px 2px 7px #999;
-          box-shadow: 0px 2px 7px #999;
   list-style: none;
-}
-
-li:first-child a {
-  -webkit-border-top-right-radius: 6px;
-     -moz-border-top-right-radius: 6px;
-          border-top-right-radius: 6px;
-  -webkit-border-top-left-radius: 6px;
-     -moz-border-top-left-radius: 6px;
-          border-top-left-radius: 6px;
-}
-li:last-child a {
-  border-bottom: 0;
-  -webkit-border-bottom-right-radius: 6px;
-     -moz-border-bottom-right-radius: 6px;
-          border-bottom-right-radius: 6px;
-  -webkit-border-bottom-left-radius: 6px;
-     -moz-border-bottom-left-radius: 6px;
-          border-bottom-left-radius: 6px;
 }
 
 li a {
   display: block;
-  padding: 4px 10px 9px;
-  border-bottom: 1px solid #e5e5e5;
+  padding: 10px 0 9px 15px;
+  border-bottom: 1px solid #eee;
   background: #fff;
   color: #000;
   text-decoration: none;
-  font-weight: bold;
-  font-size: 16px;
-  -webkit-tap-highlight-color: #776;
+  font: -apple-system-body;
+  font-size: 18px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
 }
 
 li a.dead {
-  color: #999;
+  color: #ccc;
 }
 
-li a:hover, li a.dead:hover, li a:active {
-  background: #776;
-  color: #fff;
+li a:hover, li a.dead:hover, li a:active, li a:focus {
+  outline: none;
+  background: #ddd;
 }
 
 .favicon {
   position: relative;
-  top: 5px;
-  padding: 1px;
-  border: 1px solid #ddd;
-  background: #fff;
-  -webkit-border-radius: 2px;
-     -moz-border-radius: 2px;
-          border-radius: 2px;
+  top: 2px;
+  margin-right: 8px;
 }
 
 .version {
-  margin: 8px 8px 0;
-  color: #666;
+  margin: 8px;
+  color: #aaa;
   text-align: right;
   font-size: 12px;
-  text-shadow: 0 1px 0 #fff;
 }
 
 .version a {
-  border-bottom: 2px solid #d2d2ca;
-  color: #999;
+  border-bottom: 2px solid #888;
+  color: #888;
   text-decoration: none;
 }
 
 .version a:hover {
-  border-bottom: 2px solid #c56342;
+  border-bottom: 2px solid #000;
   color: #000;
 }
 
 /* Phones, landscape and portrait */
 
 @media (max-width: 568px) {
-  .container {
-    width: 100%;
+  body {
+    background: #fff;
   }
-  li a {
-    font-size: 12px;
-  }
+
   li a:hover {
     background: #fff;
     color: #000;
   }
-}
 
-/* Portrait phones */
+  .container {
+    width: 100%;
+  }
 
-@media (max-width: 340px) {
-  li a {
-    font-size: 19px;
+  .container.slide {
+    -webkit-animation-name: slide;
+    animation-name: slide;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+  }
+
+  @-webkit-keyframes slide {
+    from {
+      -webkit-transform: translateY(0);
+    }
+
+    to {
+      display: none;
+      -webkit-transform: translateY(2000px);
+    }
+  }
+
+  @keyframes slide {
+    from {
+      transform: translateY(0);
+    }
+
+    to {
+      display: none;
+      transform: translateY(2000px);
+    }
   }
 }

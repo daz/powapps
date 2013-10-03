@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Pow Apps</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
     <link rel="stylesheet" href="style.css" type="text/css">
   </head>
   <body ontouchstart="">
@@ -22,11 +22,27 @@
       </div>
     </div>
     <script>
-      window.addEventListener('load', function() {
-       setTimeout(function() {
-        window.scrollTo(0, 0);
-        }, 0);
-      });
+      window.onload = function() {
+        var links = document.querySelectorAll('li a');
+        for (var i = links.length - 1; i >= 0; i--) {
+          links[i].addEventListener('click', slide, false);
+        }
+      }
+
+      function slide() {
+        document.querySelector('.container').className = 'container slide';
+      }
+
+      // Force reload on iOS if hit via back button
+
+      if ((/iphone|ipod|ipad.*os 5/gi).test(navigator.appVersion)) {
+        window.onpageshow = function(event) {
+          if (event.persisted) {
+            document.body.style.display = 'none';
+            location.reload();
+          }
+        }
+      }
     </script>
   </body>
 </html>

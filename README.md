@@ -14,7 +14,7 @@ Add to your iOS home screen, or bookmark!
 
 ## Installation
 
-Clone into `~/.pow`
+No dependencies. Just clone into `~/.pow`
 
 ```sh
 $ cd ~/.pow
