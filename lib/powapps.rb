@@ -18,7 +18,7 @@ class Powapps
   def response
     path = File.expand_path('../../views/layout.html.erb', __FILE__)
     layout = ERB.new(File.read(path)).result(binding)
-    Rack::Response.new(layout)
+    Rack::Response.new(layout, 200, { 'Content-Type' => 'text/html' })
   end
 
   # The domain to keep apps relative to.
