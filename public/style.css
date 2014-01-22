@@ -45,6 +45,7 @@ li a:hover, li a.dead:hover, li a:active, li a:focus {
   position: relative;
   top: 2px;
   margin-right: 8px;
+  border: none;
 }
 
 .version {
