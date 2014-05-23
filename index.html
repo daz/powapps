@@ -47,6 +47,11 @@
 <div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> ~/.pow
 <span class="nv">$ </span>git clone https://github.com/daz/powapps.git
 </pre></div>
+
+<p>(Optional) Running this on your host machine will print the Pow Apps xip.io address</p>
+
+<div class="highlight highlight-sh"><pre><span class="nv">$ </span>ifconfig <span class="p">|</span> grep <span class="s1">'inet '</span> <span class="p">|</span> grep -v <span class="s1">'127.0.0.1'</span> <span class="p">|</span> awk <span class="s1">'{print "http://powapps."$2".xip.io"}'</span>
+</pre></div>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/daz">daz</a></p>
