@@ -20,3 +20,9 @@ No dependencies. Just clone into `~/.pow`
 $ cd ~/.pow
 $ git clone https://github.com/daz/powapps.git
 ```
+
+(Optional) Running this on your host machine will print the Pow Apps xip.io address
+
+```sh
+$ ifconfig | grep 'inet ' | grep -v '127.0.0.1' | awk '{print "http://powapps."$2".xip.io"}'
+```
