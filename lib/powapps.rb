@@ -36,6 +36,6 @@ class Powapps
 
   # Directories and symlinks in ~/.pow
   def directories
-    Dir[File.join(Dir.pwd, '..', '*')]
+    Dir[File.join(ENV['HOME'], '.pow', '*')]
   end
 end
