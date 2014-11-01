@@ -11,8 +11,8 @@ class Powapps
 
   def initialize(env)
     @request = Rack::Request.new(env)
-    @domain = domain
-    @apps = apps
+    set_domain
+    set_apps
   end
 
   def response
@@ -21,21 +21,28 @@ class Powapps
     Rack::Response.new(layout, 200, { 'Content-Type' => 'text/html' })
   end
 
-  # The domain to keep apps relative to.
-  # Returns "10.0.0.1.xip.io" if we access at powapps.10.0.0.1.xip.io
-  def domain
-    @request.host.gsub /^\w+\./, ''
+  def self.domain
+    @@domain
   end
 
-  # Array of Pow apps, minus this app itself
-  def apps
-    directories.map do |path|
-      AppItem.new(path, @domain)
-    end.reject{ |app| app.name == File.basename(Dir.pwd) }
-  end
+  private
 
-  # Directories and symlinks in ~/.pow
-  def directories
-    Dir[File.join(ENV['HOME'], '.pow', '*')]
-  end
+    # Directories and symlinks in ~/.pow
+    def directories
+      Dir[File.join(ENV['HOME'], '.pow', '*')]
+    end
+
+    # Sets the domain to keep apps relative to.
+    # "10.0.0.1.xip.io" if accessed from http://powapps.10.0.0.1.xip.io or
+    # ".dev" if it's from http://pow.dev
+    def set_domain
+      @@domain = @request.host.gsub /^\w+\./, ''
+    end
+
+    # Array of Pow apps, minus this app itself
+    def set_apps
+      @apps = directories.map do |path|
+        AppItem.new(path)
+      end.reject{ |app| app.name == File.basename(Dir.pwd) }
+    end
 end

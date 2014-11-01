@@ -1,8 +1,8 @@
 require 'pathname'
 
 class AppItem
-  def initialize(path, domain)
-    @path, @domain = path, domain
+  def initialize(path)
+    @path = path
   end
 
   def name
@@ -10,7 +10,7 @@ class AppItem
   end
 
   def url
-    "http://#{name}.#{@domain}/"
+    "http://#{name}.#{Powapps.domain}/"
   end
 
   # Returns true if the symlinks target doesn't exist
