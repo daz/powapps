@@ -1,5 +1,5 @@
 require './lib/powapps'
-require './lib/app_item'
+require './lib/app'
 require './lib/favicon'
 
 run Powapps

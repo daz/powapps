@@ -42,7 +42,7 @@ class Powapps
     # Array of Pow apps, minus this app itself
     def set_apps
       @apps = directories.map do |path|
-        AppItem.new(path)
+        App.new(path)
       end.reject{ |app| app.name == File.basename(Dir.pwd) }
     end
 end

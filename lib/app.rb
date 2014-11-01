@@ -1,6 +1,6 @@
 require 'pathname'
 
-class AppItem
+class App
   def initialize(path)
     @path = path
   end
