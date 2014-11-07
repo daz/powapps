@@ -1,6 +1,8 @@
 require 'pathname'
 
 class App
+  attr_reader :path
+
   def initialize(path)
     @path = path
   end
@@ -19,6 +21,6 @@ class App
   end
 
   def favicon
-    Favicon.new(@path).source
+    Favicon.new(self)
   end
 end

@@ -1,21 +1,25 @@
 require 'base64'
 
 class Favicon
-  def initialize(app_root)
-    locate(app_root)
+  SEARCH_PATHS = %w(app/assets/images app/assets assets public/images public)
+  EXTENSIONS   = %w(png gif ico)
+  DEFAULT_PATH = '/default_favicon.png'
+
+  def initialize(app)
+    @app = app
+    locate
   end
 
-  def source
+  def url
     if exists?
-      "data:#{mime_type};base64,#{data}"
+      data_uri
     else
-      '/default_favicon.png'
+      DEFAULT_PATH
     end
   end
 
-  # Base 64 encoding of the favicon
-  def data
-    Base64.encode64(File.open(@path, 'r').read).gsub(/\n/, '')
+  def data_uri
+    "data:#{mime_type};base64,#{data}"
   end
 
   # Mime type of favicon
@@ -24,18 +28,26 @@ class Favicon
     Rack::Mime.mime_type(File.extname(@path))
   end
 
-  # Returns true unless we can't find a favicon or if favicon file is empty
   def exists?
-    File.size?(@path).to_i != 0
+    !!@path
   end
 
   private
 
-  # Look in [app path]/public/ for a favicon file
-  def locate(app_root)
-    %w[png gif ico].each do |ext|
-      @path = File.join(app_root, 'public', "favicon.#{ext}")
-      break if exists?
+    # Look in `SEARCH_PATHS` for a non-empty favicon file with extension in `EXTENSIONS`
+    def locate
+      return if @app.dead?
+      files = EXTENSIONS.map { |ext| "favicon.#{ext}"}
+      paths = SEARCH_PATHS.product(files).map { |path| File.join(@app.path, path[0], path[1]) }
+      paths.each do |path|
+        next if File.size?(path).to_i == 0
+        @path = path
+        break
+      end
     end
-  end
+
+    # Base 64 encoding of the favicon
+    def data
+      Base64.encode64(File.open(@path, 'r').read).gsub(/\n/, '')
+    end
 end
