@@ -18,16 +18,6 @@ class Favicon
     end
   end
 
-  def data_uri
-    "data:#{mime_type};base64,#{data}"
-  end
-
-  # Mime type of favicon
-  def mime_type
-    Rack::Mime::MIME_TYPES.merge!('.ico' => 'image/x-icon') # image/vnd.microsoft.icon won't render in IE8
-    Rack::Mime.mime_type(File.extname(@path))
-  end
-
   def exists?
     !!@path
   end
@@ -46,8 +36,14 @@ class Favicon
       end
     end
 
-    # Base 64 encoding of the favicon
-    def data
-      Base64.encode64(File.open(@path, 'r').read).gsub(/\n/, '')
+    def data_uri
+      data = Base64.encode64(File.open(@path, 'r').read).gsub(/\n/, '')
+      "data:#{mime_type};base64,#{data}"
+    end
+
+    # Mime type of favicon
+    def mime_type
+      Rack::Mime::MIME_TYPES.merge!('.ico' => 'image/x-icon') # image/vnd.microsoft.icon won't render in IE8
+      Rack::Mime.mime_type(File.extname(@path))
     end
 end
