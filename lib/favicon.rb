@@ -37,8 +37,8 @@ class Favicon
     # Look in `SEARCH_PATHS` for a non-empty favicon file with extension in `EXTENSIONS`
     def locate
       return if @app.dead?
-      files = EXTENSIONS.map { |ext| "favicon.#{ext}"}
-      paths = SEARCH_PATHS.product(files).map { |path| File.join(@app.path, path[0], path[1]) }
+      file_names = EXTENSIONS.map { |ext| "favicon.#{ext}"}
+      paths = SEARCH_PATHS.product(file_names).map { |path| File.join(@app.path, path) }
       paths.each do |path|
         next if File.size?(path).to_i == 0
         @path = path
