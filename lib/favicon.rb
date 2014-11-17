@@ -36,6 +36,7 @@ class Favicon
       end
     end
 
+    # Data URI for favicon
     def data_uri
       data = Base64.encode64(File.open(@path, 'r').read).gsub(/\n/, '')
       "data:#{mime_type};base64,#{data}"
