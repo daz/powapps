@@ -32,11 +32,11 @@ class Powapps
       Dir[File.join(ENV['HOME'], '.pow', '*')]
     end
 
-    # Sets the domain to keep apps relative to.
+    # Set the domain to keep apps relative to.
     # "10.0.0.1.xip.io" if accessed from http://powapps.10.0.0.1.xip.io or
-    # ".dev" if it's from http://pow.dev
+    # "dev" if it's from http://powapps.dev
     def set_domain
-      @@domain = @request.host.gsub /^\w+\./, ''
+      @@domain = @request.host.split('.')[1..-1].join('.')
     end
 
     # Array of Pow apps, minus this app itself
