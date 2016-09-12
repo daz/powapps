@@ -3,7 +3,12 @@ require 'rack'
 require 'erb'
 
 class Powapps
-  VERSION = '1.5'
+
+  VERSION = '1.6'
+
+  # The directory that contains your app symlinks.
+  # e.g. ~/.pow or ~/.puma-dev
+  APPS_DIR = [ ENV['HOME'], '.pow' ]
 
   def self.call(env)
     new(env).response.finish
@@ -27,9 +32,9 @@ class Powapps
 
   private
 
-    # Directories and symlinks in ~/.pow
+    # Directories and symlinks in apps directory
     def directories
-      Dir[File.join(ENV['HOME'], '.pow', '*')]
+      Dir[File.join(APPS_DIR, '*')]
     end
 
     # Set the domain to keep apps relative to.

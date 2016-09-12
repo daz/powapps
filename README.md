@@ -14,12 +14,16 @@ Add to your iOS home screen, or bookmark!
 
 ## Installation
 
-No dependencies. Just clone into `~/.pow`
+Just clone into `~/.pow`
+
+Compatible with Ruby >= 1.8.7 and Rack is required.
 
 ```sh
 $ cd ~/.pow
 $ git clone https://github.com/daz/powapps.git
 ```
+
+If you're using [puma-dev](https://github.com/puma/puma-dev), clone into `~/.puma-dev` and edit `lib/powapps.rb` to set `APPS_DIR = [ ENV['HOME'], '.puma-dev' ]`
 
 (Optional) Running this on your host machine will print the Pow Apps xip.io address
 
