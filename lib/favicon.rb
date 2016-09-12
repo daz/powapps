@@ -11,11 +11,7 @@ class Favicon
   end
 
   def url
-    if exists?
-      data_uri
-    else
-      DEFAULT_PATH
-    end
+    exists? ? data_uri : DEFAULT_PATH
   end
 
   def exists?
@@ -27,7 +23,7 @@ class Favicon
     # Look in `SEARCH_PATHS` for a non-empty favicon file with extension in `EXTENSIONS`
     def locate
       return if @app.dead?
-      file_names = EXTENSIONS.map { |ext| "favicon.#{ext}"}
+      file_names = EXTENSIONS.map { |ext| "favicon.#{ext}" }
       paths = SEARCH_PATHS.product(file_names).map { |path| File.join(@app.path, path) }
       paths.each do |path|
         next if File.size?(path).to_i == 0
@@ -44,7 +40,8 @@ class Favicon
 
     # Mime type of favicon
     def mime_type
-      Rack::Mime::MIME_TYPES.merge!('.ico' => 'image/x-icon') # image/vnd.microsoft.icon won't render in IE8
+      # image/vnd.microsoft.icon won't render in IE8
+      Rack::Mime::MIME_TYPES.merge!('.ico' => 'image/x-icon')
       Rack::Mime.mime_type(File.extname(@path))
     end
 end

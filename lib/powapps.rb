@@ -33,7 +33,7 @@ class Powapps
     end
 
     # Set the domain to keep apps relative to.
-    # "10.0.0.1.xip.io" if accessed from http://powapps.10.0.0.1.xip.io or
+    # e.g. "10.0.0.1.xip.io" if accessed from http://powapps.10.0.0.1.xip.io or
     # "dev" if it's from http://powapps.dev
     def set_domain
       @@domain = @request.host.split('.')[1..-1].join('.')
@@ -43,6 +43,6 @@ class Powapps
     def set_apps
       @apps = directories.map do |path|
         App.new(path)
-      end.reject{ |app| app.name == File.basename(Dir.pwd) }
+      end.reject { |app| app.name == File.basename(Dir.pwd) }
     end
 end
