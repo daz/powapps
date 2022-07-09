@@ -4,11 +4,12 @@ require 'erb'
 
 class Powapps
 
-  VERSION = '1.6'
+  VERSION = '1.7'
 
   # The directory that contains your app symlinks.
   # e.g. ~/.pow or ~/.puma-dev
-  APPS_DIR = [ ENV['HOME'], '.pow' ]
+
+  APPS_DIR = [ ENV['HOME'], '.puma-dev' ]
 
   def self.call(env)
     new(env).response.finish
